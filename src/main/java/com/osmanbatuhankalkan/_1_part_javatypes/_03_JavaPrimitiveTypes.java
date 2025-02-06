@@ -1,7 +1,8 @@
 package com.osmanbatuhankalkan._1_part_javatypes;
 
-public class _02_JavaPrimitiveTypes {
+public class _03_JavaPrimitiveTypes {
     public static void main(String[] args) {
+
         //Primitive type: 8 tanedir. null değer alamazsınız.
         //tam sayılar(4)
         //primitive typelar küçük harfle başlar. 'String' bir primitive type DEĞİLDİR!***!
