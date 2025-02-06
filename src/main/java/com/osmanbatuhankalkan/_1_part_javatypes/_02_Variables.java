@@ -33,6 +33,12 @@ public static void main(String[] args) {
     //int 44schoolNumber=11 //sayıyla başlayamazsınız.
     //int özel simgelerle başlanmaz.
     //int ''schoolNumber =11; // özel simgeyle başlayamazsınız.
+    //int
+
+    float totalSalary = 123.456f;
+    System.out.println(totalSalary);
+
+    //
 }
 
 }
