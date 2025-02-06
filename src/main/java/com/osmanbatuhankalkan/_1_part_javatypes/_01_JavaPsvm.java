@@ -3,7 +3,7 @@ package com.osmanbatuhankalkan._1_part_javatypes;
 /*
  Multiple
   */
-public class _01_JavaTypes {
+public class _01_JavaPsvm {
     // psvm => tab
     public static void main(String[] args) {
         //Çıktı almak için

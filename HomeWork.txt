@@ -3,5 +3,14 @@
 -JDK nedir ?
 -JRE nedir ?
 -Compiler nedir ?
--JVM nedir ?
--
+- JVM  nedir ?
+- Interpreter nedir ?
+- Java nedir ?
+- Java Özellikleri nelerdir ?
+- Data types  nedir ?
+- primitive types  nedir ?
+- Wrapper types nedir ?
+
+camelCase yazım nedir ?
+PascalCase yazım nedir ?
+kebab-case yazım nedir ?
