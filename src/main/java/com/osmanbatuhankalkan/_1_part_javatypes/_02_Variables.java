@@ -28,16 +28,21 @@ public static void main(String[] args) {
     int schoolNumber324 = 11;
     System.out.println(schoolNumber324);
 
-    //YAZAMAZSINIZ
-    //int schoolNumber=11; // aynı isimde yazamazsınız.
-    //int 44schoolNumber=11 //sayıyla başlayamazsınız.
-    //int özel simgelerle başlanmaz.
-    //int ''schoolNumber =11; // özel simgeyle başlayamazsınız.
-    //int
+    // yazamazsınız
+    //int schoolNumber=11; // aynı isimde yazamazsınız
+    //int 44schoolNumber=11; // sayıyla başlayamazsınız.
+    //int ~schoolNumber=11;   // özel simgeyle başlayamazsınız.
+    //int ``schoolNumber=11;   // özel simgeyle başlayamazsınız.
+    //int   school-number=99;    // kebab-case yazamazsınız.
+    //System.out.println(school-number);
+    //int school number=66;  // değişkenlerde boşluk kullanılamaz
 
     float totalSalary = 123.456f;
     System.out.println(totalSalary);
 
+    // SABIT
+    final int MAX_STUDENTS = 100;
+    System.out.println(MAX_STUDENTS);
     //
 }
 

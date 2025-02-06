@@ -22,6 +22,7 @@ public class _04_operators {
         System.out.println("Çarpma: "+number1+" * "+number2+" = "+multiplication);
         System.out.println("Kalan: "+number1+" * "+number2+" = "+modulus);
 
-        //Mantıksa Operators: && = VE || = VEYA
+        // Mantıksal Operators: &&=VE ||=VEYA !=değil
+        // ++ 1 artır,  -- 1 azalt
     }
 }
