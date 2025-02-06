@@ -16,8 +16,18 @@ git clone  https://github.com/hamitmizrak/ibb_ecodation_javacore.git
 ```
 ---
 
-## Java Core
+## Java Common Rules()
 ```sh 
+Class isimleri PascalCase göre yazılır.
+Class isimleri: Fiil olarak kullanmayız (mak-mek)
+Class : Java da 1 tane public class vardır (inner class haric)
+Class : Java static class yoktur (inner class haric)
+
+Paket isimleri: Küçük harfle yazılır.
+Paket isimleri: fiil olarak kullanmayız(mak-mek).
+Paket kısa net bir şekilde olması gerekiyor.
+
+
 
 ```
 ---
