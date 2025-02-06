@@ -1,0 +1,7 @@
+- Maven Nedir ?
+-pom.xml nedir ?
+-JDK nedir ?
+-JRE nedir ?
+-Compiler nedir ?
+-JVM nedir ?
+-
