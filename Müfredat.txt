@@ -3,129 +3,154 @@ https://kommunity.com/techistanbul/events/java-ile-yazilim-gelistirme-bootcamp-p
 
 ### Ders Programı
 4 Şubat Salı – 29 Mart Cumartesi
-Haftada 3 Gün | Salı, Perşembe 18:00-21:00 | Cumartesi 18:00-22:00
+Haftada 3 Gün | Salı, Perşembe 18:00-21:00 | Cumartesi 15:00-19:00
 Toplam: 8 Hafta – 80 Saat
 İlk 6 hafta konu + örnek-soru çözümleri + best practice
 son 2 hafta öğrenilen yerlerle ilgili sıfırdan  ATM projesi, oop, database, collection etc
-
 ---
 
 ### 1. Hafta
-Salı (4 Şubat) - 3 Saat
+🚀 Salı (4 Şubat) - 3 Saat
 - Giriş ve Kurulum
   . Java Nedir?
   . Java’nın Tarihçesi ve Sürümleri
   . JDK ve IDE kurulumu (IntelliJ, Eclipse tanıtımı)
   . Temel komut satırı araçları (javac, java vb.)
 
-Perşembe (6 Şubat) - 3 Saat
+🚀 Perşembe (6 Şubat) - 3 Saat
 - Temel Java Sözdizimi
   . Değişkenler ve Veri Tipleri
   . Operatörler (Aritmetik, Karşılaştırma, Mantıksal vb.)
+  . Escape Character
+  . Cast(Dönüşüm)
 
-Cumartesi (8 Şubat) - 4 Saat
+🚀 Cumartesi (8 Şubat) - 4 Saat
 - Kontrol Yapıları
   . if-else, switch-case
-  . for, while, do-while döngüleri
+  . Debug nasıl atılır ?
+  . for, while, do-while döngüleri, sonsuz döngüler
+
+----------------------------------------------------------------------
+### 2. Hafta
+🚀 Salı (11 Şubat) - 3 Saat
+- String & String metotları
+- Formatter
 - Metotlar (Yöntemler)
-  . Parametre kullanımı, dönüş değerleri, overloading
+  . Parametre kullanımı, dönüş değerleri, overloading, override
+
+🚀 Perşembe (13 Şubat) - 3 Saat
+- Date(Tarih)
+- İstisnalar (Exceptions)
+  . Exception Kavramı (Checked ve Unchecked ayrımı)
+  . Try-Catch-Finally
+- Throw, Throws
+  . Özel Exception sınıfları yazma
+
+🚀 Cumartesi (15 Şubat) - 4 Saat
+- Arrays
+  . Tek boyutlu diziler
+  . Çift boyutlu diziler
+----------------------------------------------------------------------
+### 3. Hafta
+🚀 Salı (18 Şubat) - 3 Saat
+- Paketler ve Erişim Belirleyiciler
+  . Paketlerin Kullanımı
+  . Erişim Belirleyiciler (public, private, protected)
+
+- - Nesne Yönelimli Programlama (OOP) Temelleri
+    . Sınıflar ve Nesneler (Constructor dahil)
+    . Kapsülleme (Encapsulation)
+
+
+
+🚀 Perşembe (20 Şubat) - 3 Saat
+- Genel Örnek: Öğrenci Bilgi Sistem
+
+
+
+🚀 Cumartesi (22 Şubat) - 4 Saat
+- Giriş/Çıkış (I/O) İşlemleri
+  . Java I/O Temelleri (Stream, Reader/Writer)
+  . File I/O
+- Genel Örnek: Öğrenci Bilgi Sistem Devam
 
 ---
+----------------------------------------------------------------------
+### 4. Hafta
+🚀 Salı (25 Şubat) - 3 Saat
+- Generics (Tür Belirleyici)
+  . Tip güvenliği
+  . Iterator ve ListIterator
 
-### 2. Hafta
-Salı (11 Şubat) - 3 Saat
-- Nesne Yönelimli Programlama (OOP) Temelleri
-  . Sınıflar ve Nesneler (Constructor dahil)
-  . Kapsülleme (Encapsulation)
+🚀 - Koleksiyonlar (Collections) ve Generics
+  . Collection Framework Genel Bakış (List, Set, Map)
+  . Temel implementasyonlar (ArrayList, LinkedList vb.)
 
-Perşembe (13 Şubat) - 3 Saat
+
+🚀 Perşembe (27 Şubat) - 3 Saat
+- Koleksiyonlar (Collections) ve Generics
+  . Collection Framework Genel Bakış (List, Set, Map)
+  . Temel implementasyonlar (ArrayList, LinkedList vb.)
+- Genel Örnek: Öğrenci Bilgi Sistem Devam
+
+
+🚀 Cumartesi (1 Mart) - 4 Saat
+- Java 8+ Yenilikleri
+  . Lambda İfadeleri
+  . Fonksiyonel Arabirimler
+- Stream API
+  . filter, map, reduce gibi fonksiyonlar
+- Method ve Constructor Reference
+  - Optional Sınıfı
+  . Yeni Tarih ve Zaman API (java.time)
+
+
+
+----------------------------------------------------------------------
+### 5. Hafta
+🚀 Salı (4 Mart) - 3 Saat
+- Çoklu İş Parçacığı (Multithreading)
+  . Thread Oluşturma ve Yönetimi
+  . Senkronizasyon
+-
+
+🚀 Perşembe (6 Mart) - 3 Saat
+- Eşzamanlılık (Concurrency)
+  . Yardımcı sınıflar (CountDownLatch, CyclicBarrier vb.)
+  . Concurrency API
+
+
+
+🚀 Cumartesi (8 Mart) - 4 Saat
+- Enum
+- Record
+
+
+
+----------------------------------------------------------------------
+### 6. Hafta
+🚀 Salı (11 Mart) - 3 Saat
 - Kalıtım (Inheritance)
   . Super ve Subclass kavramları
   . Override ve Overload farkı
 
-Cumartesi (15 Şubat) - 4 Saat
+
+🚀 Perşembe (13 Mart) - 3 Saat
 - Polimorfizm (Polymorphism)
   . Dinamik ve Statik Polimorfizm örnekleri
 - Soyutlama (Abstraction)
   . Abstract sınıflar ve arabirimler (interface)
 
----
 
-### 3. Hafta
-Salı (18 Şubat) - 3 Saat
-- Paketler ve Erişim Belirleyiciler
-  . Paketlerin Kullanımı
-  . Erişim Belirleyiciler (public, private, protected)
-
-Perşembe (20 Şubat) - 3 Saat
-- İstisnalar (Exceptions)
-  . Exception Kavramı (Checked ve Unchecked ayrımı)
-  . Try-Catch-Finally
-
-Cumartesi (22 Şubat) - 4 Saat
-- Throw, Throws
-  . Özel Exception sınıfları yazma
-
----
-
-### 4. Hafta
-Salı (25 Şubat) - 3 Saat
-- Koleksiyonlar (Collections) ve Generics
-  . Collection Framework Genel Bakış (List, Set, Map)
-  . Temel implementasyonlar (ArrayList, LinkedList vb.)
-
-Perşembe (27 Şubat) - 3 Saat
-- Generics (Tür Belirleyici)
-  . Tip güvenliği
-  . Iterator ve ListIterator
-
-Cumartesi (1 Mart) - 4 Saat
-- Java 8+ Yenilikleri
-  . Lambda İfadeleri
-  . Fonksiyonel Arabirimler
-
----
-
-### 5. Hafta
-Salı (4 Mart) - 3 Saat
-- Stream API
-  . filter, map, reduce gibi fonksiyonlar
-- Method ve Constructor Reference
-
-Perşembe (6 Mart) - 3 Saat
-- Optional Sınıfı
-  . Yeni Tarih ve Zaman API (java.time)
-
-Cumartesi (8 Mart) - 4 Saat
-- Giriş/Çıkış (I/O) İşlemleri
-  . Java I/O Temelleri (Stream, Reader/Writer)
-  . File I/O
-
----
-
-### 6. Hafta
-Salı (11 Mart) - 3 Saat
-- Çoklu İş Parçacığı (Multithreading)
-  . Thread Oluşturma ve Yönetimi
-  . Senkronizasyon
-
-Perşembe (13 Mart) - 3 Saat
-- Eşzamanlılık (Concurrency)
-  . Yardımcı sınıflar (CountDownLatch, CyclicBarrier vb.)
-  . Concurrency API
-
-Cumartesi (15 Mart) - 4 Saat
-- JDBC ve Veritabanı Bağlantısı
-  . JDBC Mimarisi
-  . CRUD İşlemleri
-  . PreparedStatement ve CallableStatement
-
+🚀 Cumartesi (15 Mart) - 4 Saat
+- (AES/DES/RSA/HASHING)
 ---
 
 ### Toplam Süre: 60 Saat
 
-
-#####################################################################
+#########################################################################################################
+#########################################################################################################
+Eğer yetişirse; JavaFX kullanılacak
 ATM projesi için yukarıdaki Java SE konu başlıklarını kullanarak iki haftalık bir plan hazırladım.
 Bu plan, proje geliştirme sürecinde temel kavramları uygulamalı olarak içerecek şekilde yapılandırılmıştır.
 
