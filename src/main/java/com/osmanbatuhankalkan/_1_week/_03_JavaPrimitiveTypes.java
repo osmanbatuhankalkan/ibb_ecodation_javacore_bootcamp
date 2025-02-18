@@ -1,4 +1,4 @@
-package com.osmanbatuhankalkan._1_part_javatypes;
+package com.osmanbatuhankalkan._1_week;
 
 public class _03_JavaPrimitiveTypes {
     public static void main(String[] args) {
