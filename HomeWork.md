@@ -58,7 +58,7 @@ null değeri ne zaman kullanabilirim ?
 > Override nedir ?
 > String kelime= new String(); , String kelime= "";  iki yapı arasındaki fark ?
 > vocabulary1== vocabulary2 ile vocabulary1.equals(vocabulary2));
-> vocabulary1== vocabulary2 (String kelime= new String();) 
+> vocabulary1== vocabulary2 (String kelime= new String();)
 > ile vocabulary1.equals(vocabulary2)) (String kelime= "";)
 
 ## 5.Ders Ödevi (13 Şubat)
@@ -70,3 +70,13 @@ null değeri ne zaman kullanabilirim ?
 
 ## 6.Ders Ödevi (15 Şubat)
 > Array => foreach ile iterative for döngü arasındaki farklar nelerdir ?
+
+
+## 7.Ders Ödevi (20 Şubat)
+> constructor ile static {} arasındaki farklar ?
+> if(name!=null && !name.isEmpty())  bu kod ne iş yapar ?
+> name!=null:Kullanıcı hiç birşey girmemişse null,  !name.isEmpty() Eğer yazılımcı String name="";
+>
+
+## 8.Ders Ödevi (22 Şubat)
+> 
