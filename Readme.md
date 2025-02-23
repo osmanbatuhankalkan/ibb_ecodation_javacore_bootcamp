@@ -992,7 +992,7 @@ public class MemoryTest {
 3. `modify(a, b);` metoduna çağrılırken:
     - `x` → yeni bir stack değişkeni olarak **5 değerini kopyalar** (pass by value).
     - `y` → referans olarak **yeni bir Integer nesnesi alır**.
-4. `x = 10;` → **Stack içinde yeni bir değişken yaratılır ve değer değiştirilir.**
+4. `x = 10;` → **Stack içinde yeni bir değişken oluşturulur ve değer değiştirilir.**
 5. `y = new Integer(10);` → **Heap’te yeni bir Integer nesnesi oluşturulur, ancak bu `modify` metodu içinde kalır ve main metodundaki `b` değişkenini etkilemez.**
 6. `main` metodu bittiğinde, `a` hâlâ `5`, `b` hâlâ `5` olarak kalır.
 
@@ -1065,7 +1065,7 @@ Bu iki yaklaşımın arasındaki temel farklar şunlardır:
 Short wrapperTypeShort1 = new Short((short) 32767);
 ```
 - `new` anahtar kelimesi kullanıldığı için **her çağrıldığında yeni bir nesne oluşturulur**.
-- **Heap bellekte ayrı bir nesne** yaratılır.
+- **Heap bellekte ayrı bir nesne** oluşturılır.
 - **Garbage Collector (GC)** tarafından temizlenmesi gerekir.
 - **Bellek tüketimi ve performans açısından dezavantajlıdır.**
 - **`==` operatörü ile karşılaştırıldığında farklı nesneler olduğu için false dönebilir.**
@@ -1996,14 +1996,14 @@ Bu bir alt satıra geçti.
 ```java
 public class EscapeExample {
     public static void main(String[] args) {
-        System.out.println("İsim:\tAhmet");
+        System.out.println("İsim:\tHamit");
         System.out.println("Soyisim:\tYılmaz");
     }
 }
 ```
 **Çıktı:**
 ```
-İsim:     Ahmet
+İsim:     Hamit
 Soyisim:  Yılmaz
 ```
 
@@ -2260,7 +2260,7 @@ import java.util.Scanner;
 
 public class ScannerDelimiterExample {
     public static void main(String[] args) {
-        String veri = "Ahmet,Mehmet,Ayşe,Fatma";
+        String veri = "Hamit,Mehmet,Ayşe,Fatma";
         Scanner scanner = new Scanner(veri);
         scanner.useDelimiter(",");
 
@@ -2274,7 +2274,7 @@ public class ScannerDelimiterExample {
 ```
 ### **Çıktı:**
 ```
-Ahmet
+Hamit
 Mehmet
 Ayşe
 Fatma
@@ -3044,7 +3044,7 @@ Bu iki yaklaşım arasındaki farkları inceleyelim.
 String kelime1 = new String("Merhaba");
 ```
 - **Heap bellekte yeni bir `String` nesnesi oluşturur.**
-- **String pool'u kullanmaz**, her seferinde **yeni bir nesne yaratılır**.
+- **String pool'u kullanmaz**, her seferinde **yeni bir nesne oluşturılır**.
 - Daha fazla bellek tüketebilir ve gereksiz nesne oluşturulmasına sebep olabilir.
 
 ---
@@ -3943,14 +3943,14 @@ public class MetotOrnek {
     }
 
     public static void main(String[] args) {
-        selamVer("Ahmet"); // Parametre olarak "Ahmet" gönderildi
+        selamVer("Hamit"); // Parametre olarak "Hamit" gönderildi
         selamVer("Ayşe");  // Parametre olarak "Ayşe" gönderildi
     }
 }
 ```
 **Çıktı:**
 ```
-Merhaba, Ahmet!
+Merhaba, Hamit!
 Merhaba, Ayşe!
 ```
 📌 **Metot farklı girişlerle farklı sonuçlar üretebilir.**
@@ -4899,7 +4899,7 @@ import java.util.Formatter;
 public class Main {
     public static void main(String[] args) {
         Formatter formatter = new Formatter();
-        formatter.format("Merhaba %s, yaşınız %d", "Ahmet", 25);
+        formatter.format("Merhaba %s, yaşınız %d", "Hamit", 25);
         System.out.println(formatter);
         formatter.close();
     }
@@ -4907,7 +4907,7 @@ public class Main {
 ```
 **🎯 Çıktı:**
 ```
-Merhaba Ahmet, yaşınız 25
+Merhaba Hamit, yaşınız 25
 ```
 
 ### **📌 Açıklamalar:**
@@ -5965,8 +5965,427 @@ Bu algoritma **O(n²)** uzay karmaşıklığına sahiptir, çünkü **n × n** b
 3. Büyük veri kümeleriyle çalışıyorsanız **O(log n) veya O(n log n) zaman karmaşıklığı** olan algoritmaları tercih edin.
 
 Bu bilgilerle, bir algoritmanın **verimli olup olmadığını** anlayabilir ve hangi durumlarda hangi yöntemlerin daha uygun olduğunu belirleyebilirsiniz! 🚀
+---
+
+## Javada System
+```sh 
+
+```
+---
+
+Java'da `System` sınıfı, **java.lang** paketinde bulunan ve Java uygulamalarının temel sistem seviyesinde işlemler gerçekleştirmesini sağlayan bir yardımcı sınıftır. `System` sınıfı, genellikle giriş ve çıkış işlemleri, hata ayıklama, ortam değişkenleri, zaman ölçümleri, çöp toplama (garbage collection) ve sistem özelliklerine erişim gibi işlemler için kullanılır.
+
+---
+
+## 1. **System Sınıfının Genel Yapısı**
+- `System` sınıfı **final** olarak tanımlanmıştır, yani **kalıtım alınamaz**.
+- **Constructor'ı `private` olduğu için** nesne oluşturulamaz.
+- Tüm metodları **static** olduğu için, doğrudan `System.method()` şeklinde çağrılır.
+
+### **System Sınıfının Başlıca Üyeleri**
+`System` sınıfının içinde bulunan **static değişkenler** ve **metodlar** şunlardır:
+
+| Üye (Değişken/Metod) | Açıklama |
+|----------------------|----------|
+| `System.in`  | Konsoldan veri almak için kullanılır (InputStream). |
+| `System.out` | Konsola çıktı vermek için kullanılır (PrintStream). |
+| `System.err` | Hata mesajlarını göstermek için kullanılır (PrintStream). |
+| `System.exit(int status)` | Programı sonlandırır. |
+| `System.gc()` | Garbage Collector'ı çağırır. |
+| `System.nanoTime()` | Yüksek çözünürlüklü zaman ölçümü yapar. |
+| `System.currentTimeMillis()` | Geçerli zamanı alır (Unix Epoch Time). |
+| `System.getProperty(String key)` | Sistem özelliklerini getirir. |
+| `System.setProperty(String key, String value)` | Sistem özelliklerini ayarlar. |
+| `System.getenv(String name)` | Ortam değişkenlerini getirir. |
+| `System.arraycopy(Object src, int srcPos, Object dest, int destPos, int length)` | Diziler arasında hızlı kopyalama yapar. |
+
+---
+
+## 2. **System Sınıfı İçindeki Önemli Değişkenler**
+### 2.1. **`System.in` (Standart Giriş)**
+- `System.in`, standart giriş akışıdır (`InputStream` tipindedir).
+- Kullanıcıdan veri almak için **`Scanner`** veya **`BufferedReader`** ile kullanılabilir.
+
+**Örnek: Kullanıcıdan veri alma**
+```java
+import java.util.Scanner;
+
+public class SystemInExample {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Bir şey yazın: ");
+        String input = scanner.nextLine();
+        System.out.println("Girdiğiniz: " + input);
+        scanner.close();
+    }
+}
+```
+
+---
+
+### 2.2. **`System.out` (Standart Çıkış)**
+- `System.out`, **standart çıkış** nesnesidir (`PrintStream`).
+- `print()`, `println()` ve `printf()` metodları ile çıktı yazdırılabilir.
+
+**Örnek: Konsola çıktı yazdırma**
+```java
+public class SystemOutExample {
+    public static void main(String[] args) {
+        System.out.println("Merhaba, Dünya!");
+        System.out.print("Yan yana yazılır.");
+        System.out.printf("\nFormatlı yazdırma: %d + %d = %d", 5, 3, 5+3);
+    }
+}
+```
+
+---
+
+### 2.3. **`System.err` (Hata Çıkışı)**
+- `System.err`, hata mesajlarını göstermek için kullanılır (`PrintStream`).
+- `System.out` ile aynı işlevdedir ama genellikle **hataları loglamak** için kullanılır.
+
+**Örnek: Hata mesajı yazdırma**
+```java
+public class SystemErrExample {
+    public static void main(String[] args) {
+        System.err.println("Bu bir hata mesajıdır!");
+    }
+}
+```
+
+---
+
+## 3. **Sistemle İlgili Bilgilere Erişim**
+### 3.1. **System.getProperty() Kullanımı**
+- Java'nın çalıştığı sistem hakkında bilgi almak için kullanılır.
+
+**Örnek: Sistem bilgilerini alma**
+```java
+public class SystemPropertiesExample {
+    public static void main(String[] args) {
+        System.out.println("Java Versiyonu: " + System.getProperty("java.version"));
+        System.out.println("OS Adı: " + System.getProperty("os.name"));
+        System.out.println("Kullanıcı Adı: " + System.getProperty("user.name"));
+        System.out.println("Çalışma Dizini: " + System.getProperty("user.dir"));
+    }
+}
+```
+
+### 3.2. **System.getenv() Kullanımı**
+- Ortam değişkenlerini almak için kullanılır.
+
+**Örnek: Ortam değişkenlerini alma**
+```java
+public class SystemEnvExample {
+    public static void main(String[] args) {
+        System.out.println("PATH: " + System.getenv("PATH"));
+        System.out.println("JAVA_HOME: " + System.getenv("JAVA_HOME"));
+    }
+}
+```
+
+---
+
+## 4. **Garbage Collector'ı Çalıştırma**
+- `System.gc()` metodu **çöp toplayıcının çalışmasını önerebilir**, ancak garanti vermez.
+
+**Örnek: Bellek temizleme çağrısı**
+```java
+public class GarbageCollectorExample {
+    public static void main(String[] args) {
+        System.out.println("Çöp toplama çağrısı yapılıyor...");
+        System.gc();
+    }
+}
+```
+
+---
+
+## 5. **Zaman Ölçme**
+### 5.1. **System.currentTimeMillis()**
+- Milisaniye cinsinden **geçerli zaman damgası** alır.
+
+**Örnek: Zaman hesaplama**
+```java
+public class TimeExample {
+    public static void main(String[] args) {
+        long start = System.currentTimeMillis();
+        
+        // 1 milyon döngü çalıştır
+        for (int i = 0; i < 1_000_000; i++) { }
+
+        long end = System.currentTimeMillis();
+        System.out.println("Geçen süre: " + (end - start) + " ms");
+    }
+}
+```
+
+### 5.2. **System.nanoTime()**
+- **Daha hassas** zaman ölçümü yapar.
+
+**Örnek: Nano zaman hesaplama**
+```java
+public class NanoTimeExample {
+    public static void main(String[] args) {
+        long start = System.nanoTime();
+
+        for (int i = 0; i < 1_000_000; i++) { }
+
+        long end = System.nanoTime();
+        System.out.println("Geçen süre: " + (end - start) + " ns");
+    }
+}
+```
+
+---
+
+## 6. **Dizi Kopyalama**
+- `System.arraycopy()` metodu, diziler arasında **hızlı kopyalama** yapar.
+
+**Örnek: Dizi elemanlarını kopyalama**
+```java
+public class ArrayCopyExample {
+    public static void main(String[] args) {
+        int[] kaynak = {1, 2, 3, 4, 5};
+        int[] hedef = new int[5];
+
+        System.arraycopy(kaynak, 0, hedef, 0, 5);
+
+        for (int num : hedef) {
+            System.out.print(num + " ");
+        }
+    }
+}
+```
+
+---
+
+## 7. **Programdan Çıkış Yapma**
+- `System.exit(int status)`, programı **belirtilen durum koduyla sonlandırır**.
+- **0 başarıyla çıkış**, **1 hata nedeniyle çıkış** anlamına gelir.
+
+**Örnek: Programdan çıkma**
+```java
+public class SystemExitExample {
+    public static void main(String[] args) {
+        System.out.println("Program sonlandırılıyor...");
+        System.exit(0);
+    }
+}
+```
+
+---
+
+### **Sonuç**
+`System` sınıfı, **giriş-çıkış işlemleri, hata mesajları, sistem bilgileri, zaman ölçümü, dizi kopyalama ve programdan çıkış** gibi birçok önemli işlevi kapsayan güçlü bir yardımcı sınıftır. Java programlarında sıkça kullanılan bu sınıfın işlevlerini iyi anlamak, yazılım geliştirmede büyük kolaylık sağlar.
 
 
+## Javada break ile System.exit(0) Arasındaki Farklar
+```sh 
+
+```
+---
+Java'da `break` ve `System.exit(0)` ifadeleri, programın akışını kontrol etmek için kullanılır, ancak ikisi arasında önemli farklar vardır. İşte temel farklar:
+
+---
+
+## 1. **Temel Farklar**
+
+| Özellik | `break` | `System.exit(0)` |
+|---------|--------|-----------------|
+| **Kullanım Alanı** | Döngüler (`for`, `while`, `do-while`) ve `switch-case` blokları içinde kullanılır. | Programın tamamını sonlandırır. |
+| **Ne Yapıyor?** | Sadece **içinde bulunduğu döngüyü veya switch-case'i** kırar ve bir sonraki satırdan devam eder. | Programı tamamen kapatır ve çalışmasını durdurur. |
+| **Etki Alanı** | Yalnızca bulunduğu döngü veya switch bloğunu etkiler. | JVM'yi kapatarak programı tamamen sonlandırır. |
+| **Geri Dönüş Değeri (Exit Code)** | Yoktur. | Parametre olarak verilen exit koduna göre sistem çıkış kodu belirlenir. |
+| **Try-Finally Bloklarında Davranış** | `break` çalışsa bile `finally` bloğu her zaman çalışır. | `System.exit(0)` çağrıldığında, `finally` bloğu garanti edilmez, bazen çalıştırılmadan çıkış yapılabilir. |
+
+---
+
+## 2. **`break` Kullanımı**
+
+- `break`, **yalnızca döngüleri ve switch-case bloklarını kırmak** için kullanılır. Döngüden çıkıldığında program çalışmaya devam eder.
+
+**Örnek 1: Döngüde `break` Kullanımı**
+```java
+public class BreakExample {
+    public static void main(String[] args) {
+        for (int i = 1; i <= 5; i++) {
+            if (i == 3) {
+                break; // 3 olduğunda döngüyü sonlandırır
+            }
+            System.out.println("i: " + i);
+        }
+        System.out.println("Döngüden çıkıldı."); // Döngü sonrası çalışmaya devam eder
+    }
+}
+```
+**Çıktı:**
+```
+i: 1
+i: 2
+Döngüden çıkıldı.
+```
+
+**Örnek 2: `switch-case` ile `break` Kullanımı**
+```java
+public class SwitchBreakExample {
+    public static void main(String[] args) {
+        int sayi = 2;
+        switch (sayi) {
+            case 1:
+                System.out.println("Sayı 1");
+                break;
+            case 2:
+                System.out.println("Sayı 2");
+                break; // Burada kırılır, sonraki case çalışmaz
+            case 3:
+                System.out.println("Sayı 3");
+                break;
+            default:
+                System.out.println("Bilinmeyen sayı");
+        }
+    }
+}
+```
+**Çıktı:**
+```
+Sayı 2
+```
+Burada `break` olmasaydı, `case 3` de çalışmaya devam ederdi.
+
+---
+
+## 3. **`System.exit(0)` Kullanımı**
+- `System.exit(0)`, programın **tamamını sonlandırır** ve JVM'yi kapatır.
+- `exit(0)`: **Başarılı çıkışı** ifade eder.
+- `exit(1)`, `exit(-1)`, `exit(2)`, vb.: **Hata kodlarıdır**, genellikle bir hata olduğunda sistem tarafından kullanılır.
+
+**Örnek 1: Programı Sonlandırma**
+```java
+public class ExitExample {
+    public static void main(String[] args) {
+        System.out.println("Program başlıyor...");
+        
+        System.exit(0); // Program burada tamamen sonlanır
+        
+        System.out.println("Bu satır çalışmaz.");
+    }
+}
+```
+**Çıktı:**
+```
+Program başlıyor...
+```
+Görüldüğü gibi, `System.exit(0)` çağrıldığında, ondan sonraki kodlar çalışmaz.
+
+---
+
+## 4. **`break` ve `System.exit(0)` Farklı Davranışları**
+### **4.1. Döngü İçinde Kullanım**
+**`break` sadece döngüden çıkar, ama program çalışmaya devam eder:**
+```java
+public class BreakVsExit {
+    public static void main(String[] args) {
+        for (int i = 1; i <= 5; i++) {
+            if (i == 3) {
+                break; // Sadece döngüden çıkar
+            }
+            System.out.println("i: " + i);
+        }
+        System.out.println("Döngüden sonra çalışmaya devam eder.");
+    }
+}
+```
+**Çıktı:**
+```
+i: 1
+i: 2
+Döngüden sonra çalışmaya devam eder.
+```
+
+**`System.exit(0)` programı tamamen kapatır:**
+```java
+public class BreakVsExit {
+    public static void main(String[] args) {
+        for (int i = 1; i <= 5; i++) {
+            if (i == 3) {
+                System.exit(0); // Programı tamamen kapatır
+            }
+            System.out.println("i: " + i);
+        }
+        System.out.println("Bu satır çalışmaz.");
+    }
+}
+```
+**Çıktı:**
+```
+i: 1
+i: 2
+```
+Gördüğünüz gibi, `System.exit(0)` çağrıldıktan sonra **program tamamen durduğu için** döngüden sonra kodlar çalışmaz.
+
+---
+
+### **4.2. `finally` Blokları ile Farklılık**
+- `break` kullanıldığında `finally` bloğu **her zaman çalışır**.
+- `System.exit(0)` kullanıldığında `finally` bloğu **çalışmayabilir**.
+
+**`break` ile `finally` her zaman çalışır:**
+```java
+public class BreakFinallyExample {
+    public static void main(String[] args) {
+        try {
+            for (int i = 1; i <= 5; i++) {
+                if (i == 3) {
+                    break;
+                }
+                System.out.println("i: " + i);
+            }
+        } finally {
+            System.out.println("Finally bloğu çalıştı.");
+        }
+    }
+}
+```
+**Çıktı:**
+```
+i: 1
+i: 2
+Finally bloğu çalıştı.
+```
+
+**`System.exit(0)` ile `finally` bloğu çalışmayabilir:**
+```java
+public class ExitFinallyExample {
+    public static void main(String[] args) {
+        try {
+            System.out.println("Program başlıyor...");
+            System.exit(0);
+        } finally {
+            System.out.println("Finally bloğu çalıştı."); // Çalışmayabilir
+        }
+    }
+}
+```
+**Çıktı:**
+```
+Program başlıyor...
+```
+Burada `finally` bloğu büyük olasılıkla çalışmaz çünkü JVM kapatılmıştır.
+
+---
+
+## 5. **Özet ve Karşılaştırma**
+| **Özellik** | **break** | **System.exit(0)** |
+|------------|----------|-------------------|
+| **Ne yapar?** | Döngüyü veya switch-case bloğunu kırar. | Programı tamamen kapatır. |
+| **Etki Alanı** | Sadece ilgili döngüyü etkiler. | JVM'yi kapatır, program tamamen durur. |
+| **Kullanıldığı Yer** | Döngüler (`for`, `while`, `do-while`) ve `switch-case` | Her yerde kullanılabilir. |
+| **Sonraki kod çalışır mı?** | Evet, sadece döngüden sonra devam eder. | Hayır, `exit(0)` sonrası kod çalışmaz. |
+| **finally bloğu çalışır mı?** | Evet. | Çalışmayabilir. |
+| **Çıkış kodu** | Yoktur. | `exit(0)`, `exit(1)`, `exit(-1)` gibi değerler döndürebilir. |
+
+**Sonuç olarak**, `break` yalnızca döngüleri veya switch-case yapısını kırarken, `System.exit(0)` programın tamamını durdurarak JVM'yi kapatır.
 
 ## Erişim Belirleyiciler Devam-1
 ```sh 
@@ -6679,8 +7098,1031 @@ Kapı Sayısı: 4
 
 Java'da sınıflar, büyük ölçekli projelerde **düzeni ve okunabilirliği artırarak** programlamayı daha etkili hale getirir. 🚀
 
+## if(name!=null && !name.isEmpty())
+```sh 
+
+```
+---
+
+Kodunuzdaki şu satır:
+
+```java
+if(name!=null && !name.isEmpty())
+```
+
+### **Ne İşe Yarar?**
+Bu kod, `name` değişkeninin **boş (empty) veya null olup olmadığını kontrol eder**.
+
+1. **`name != null`**
+    - Eğer `name` değişkeni `null` ise, `NullPointerException` hatasını önlemek için işlem yapmadan devam eder.
+
+2. **`!name.isEmpty()`**
+    - `name` değişkeni boş bir string (`""`) içeriyorsa, işlemi yapmadan devam eder. `isEmpty()` metodu, stringin **hiçbir karakter içermediğini** kontrol eder.
+
+### **Örnek Senaryolar**
+| `name` Değeri     | `name != null` | `!name.isEmpty()` | Koşul Sonucu (`true/false`) |
+|-------------------|--------------|-----------------|-----------------|
+| `"Hamit"`        | `true`       | `true`          | ✅ `true` (Çalışır) |
+| `""` (boş string) | `true`       | `false`         | ❌ `false` (Çalışmaz) |
+| `null`           | `false`      | (Kontrol edilmez) | ❌ `false` (Çalışmaz) |
+
+### **Neden Kullanılır?**
+- **NullPointerException hatasından kaçınmak için.**
+- **Boş string üzerinde gereksiz işlemler yapmamak için.**
+
+Bu sayede `setName` metodunda `null` veya boş bir string girişi olduğunda hatasız bir şekilde `" "` olarak atanmasını sağlayabiliriz.
+
+## POJO
+```sh 
+
+```
+---
+### **Java'da POJO (Plain Old Java Object) Nedir?**
+
+POJO, **"Plain Old Java Object"** teriminin kısaltmasıdır ve özellikle Java dünyasında, basit, standart Java sınıflarını tanımlamak için kullanılır. POJO'lar, belirli bir çerçeveye (framework) veya Java'nın özel kütüphanelerine bağlı olmayan, genellikle yalnızca değişkenler (fields), getter ve setter metodları, yapıcı metodlar (constructors) ve bazı temel işlemleri içeren sınıflardır.
+
+---
+
+## **POJO'nun Genel Özellikleri**
+POJO sınıfları, bazı temel özellikleri taşımalıdır:
+
+1. **Java SE Bağımsızdır:** POJO sınıfları, Java SE'nin (Java Standard Edition) temel özelliklerine dayanır ve özel bir kütüphaneye veya API'ye bağımlı olmadan çalışabilir.
+2. **Getter ve Setter Metodları İçerir:** Nesne özelliklerine erişmek ve değiştirmek için getter ve setter metodları kullanılabilir.
+3. **Constructor (Yapıcı Metod) Bulundurur:** Parametreli veya parametresiz yapıcı metodlar olabilir.
+4. **Serileştirilebilir (Opsiyonel):** POJO nesneleri, eğer kalıcı olarak saklanacaksa veya ağ üzerinden taşınacaksa `Serializable` arayüzünü uygulayabilir.
+5. **Annotations (Ek Açıklamalar) Kullanmaya Zorunlu Değildir:** POJO'lar, herhangi bir özel açıklama (annotation) kullanmak zorunda değildir.
+6. **Özel Bir Kütüphaneye veya Framework’e Bağlı Değildir:** Örneğin, EJB (Enterprise Java Beans) gibi ağır yapılar içermez.
+7. **İçinde İş Mantığı (Business Logic) Olmaz:** Genellikle sadece verileri tutar ve işler.
+
+---
+
+## **POJO'nun Kullanım Amaçları**
+POJO sınıfları, genellikle veri taşımak ve depolamak için kullanılır. Bu sınıflar, veri modeli oluştururken temel taşlardır ve aşağıdaki alanlarda yaygın olarak kullanılır:
+
+1. **Veri Transferi (DTO - Data Transfer Object)**
+    - Bir katmandan diğerine veri iletmek için kullanılır.
+    - Örneğin, bir veritabanından çekilen kullanıcı bilgilerini içeren bir `User` POJO nesnesi oluşturulabilir.
+
+2. **Veritabanı İşlemleri (ORM - Object-Relational Mapping)**
+    - Hibernate gibi ORM araçları, veritabanı tablolarını POJO nesneleri ile eşleştirir.
+    - Örneğin, `Employee` sınıfı bir veritabanı tablosuna karşılık gelebilir.
+
+3. **JSON veya XML Serileştirme**
+    - Spring Boot ve REST API’lerde POJO nesneleri JSON veya XML olarak kullanılabilir.
+    - Örneğin, bir REST API çağrısında dönen JSON verisi bir POJO nesnesine dönüştürülebilir.
+
+4. **JavaBeans Yapısına Alternatif Olarak**
+    - JavaBeans, özel kuralları (örneğin, `Serializable` olmak, varsayılan yapıcıya sahip olmak vb.) gerektiren daha ağır bir yapı sunarken, POJO'lar daha hafif ve bağımsızdır.
+
+---
+
+## **POJO'nun Örnek Kullanımı**
+
+Aşağıda temel bir **POJO (Plain Old Java Object)** sınıfı örneği verilmiştir:
+
+```java
+public class Employee {
+    private int id;
+    private String name;
+    private double salary;
+
+    // Parametresiz Yapıcı (No-Args Constructor)
+    public Employee() {}
+
+    // Parametreli Yapıcı (All-Args Constructor)
+    public Employee(int id, String name, double salary) {
+        this.id = id;
+        this.name = name;
+        this.salary = salary;
+    }
+
+    // Getter ve Setter Metodları
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
+
+    // toString Metodu
+    @Override
+    public String toString() {
+        return "Employee{id=" + id + ", name='" + name + "', salary=" + salary + "}";
+    }
+}
+```
+
+Bu `Employee` sınıfı basit bir POJO’dur. İçinde sadece:
+
+- `id`, `name` ve `salary` gibi alanlar (fields)
+- Getter ve setter metodları
+- Parametreli ve parametresiz yapıcı metodlar
+- `toString()` metodu bulunur.
+
+Herhangi bir özel çerçeveye veya kütüphaneye bağımlı değildir.
+
+---
+
+## **POJO ile İlgili Özel Konular**
+
+### **1. POJO ile JavaBeans Farkı**
+POJO, **JavaBeans** ile sıkça karıştırılır. Ancak aralarındaki farklar şunlardır:
+
+| Özellik         | POJO                          | JavaBeans                      |
+|----------------|--------------------------------|--------------------------------|
+| Bağımsızlık    | Herhangi bir kurala bağlı değildir. | JavaBeans spesifik kurallara sahiptir. |
+| Serializable   | Opsiyoneldir. | JavaBeans için zorunludur. |
+| No-Arg Constructor | Opsiyoneldir. | Zorunludur. |
+| Getter/Setter | Genellikle kullanılır ama zorunlu değildir. | Zorunludur. |
+| Framework Kullanımı | ORM, DTO, REST API vb. | Genellikle GUI uygulamalarında kullanılır. |
+
+### **2. POJO ve Lombok Kullanımı**
+Java'da POJO sınıfları genellikle getter, setter ve constructor gibi birçok tekrar eden kod içerdiğinden, **Lombok** kütüphanesi POJO'ları daha az kod ile yazmayı sağlar.
+
+Örneğin, yukarıdaki `Employee` sınıfını **Lombok** ile yazarsak:
+
+```java
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Employee {
+    private int id;
+    private String name;
+    private double salary;
+}
+```
+
+Burada:
+- `@Data` → Getter, Setter, `toString()`, `equals()` ve `hashCode()` metodlarını otomatik ekler.
+- `@NoArgsConstructor` → Parametresiz yapıcıyı oluşturur.
+- `@AllArgsConstructor` → Parametreli yapıcıyı oluşturur.
+
+Bu sayede, POJO'nun gereksiz kodlarını yazmadan aynı fonksiyonelliği elde ederiz.
+
+---
+
+## **Sonuç**
+POJO (Plain Old Java Object), Java'da temel veri taşıyıcı sınıfları oluşturmanın standart ve bağımsız bir yoludur. Çeşitli alanlarda, özellikle **DTO (Data Transfer Object)**, **ORM (Hibernate gibi)**, **JSON/XML Serileştirme** gibi yerlerde yaygın olarak kullanılır.
+
+- POJO, herhangi bir özel Java kütüphanesine veya çerçeveye bağlı değildir.
+- Getter ve setter metodları ile çalışır.
+- JavaBeans kadar sıkı kurallara sahip değildir.
+- Lombok gibi araçlarla daha az kod yazmamızı sağlar.
+
+POJO'lar, Java uygulamalarında veri modellerini oluşturmanın en yaygın ve basit yoludur.
+
+## BEAN
+```sh 
+
+```
+---
+
+### **Java'da Core Bean Nedir?**
+Java'da **Core Bean**, genellikle Spring Framework bağlamında kullanılan bir kavramdır. **Bean**, temel olarak Spring Container tarafından yönetilen ve uygulamanın bir parçası olarak kullanılan bir nesnedir. Spring uygulamalarında, özellikle **IoC (Inversion of Control)** ve **Dependency Injection (Bağımlılık Enjeksiyonu)** mekanizmaları sayesinde Bean nesneleri merkezi bir yönetim altına alınır.
+
+Spring Framework'ün ana bileşeni olan **ApplicationContext** veya **BeanFactory** gibi bileşenler, Core Bean'leri yönetir. Core Bean’ler, uygulamanın farklı bileşenleri arasında bağımlılıkları yönetmek için kullanılır.
+
+---
+
+## **1. Core Bean Kavramı**
+Core Bean, genellikle aşağıdaki bileşenleri içeren temel Spring nesnelerini ifade eder:
+
+1. **Service Beans** → İş mantığını içeren servis nesneleri.
+2. **Repository Beans** → Veritabanı işlemlerini yöneten bileşenler.
+3. **Controller Beans** → MVC mimarisinde kullanılan kontrol bileşenleri.
+4. **Configuration Beans** → Yapılandırma ve özelleştirme bileşenleri.
+5. **Component Beans** → Genel bileşen olarak kullanılan özel sınıflar.
+
+---
+
+## **2. Bean Tanımlama Yöntemleri**
+Spring içinde bir **Core Bean** tanımlamanın birkaç yolu vardır:
+
+### **2.1. XML Tabanlı Tanımlama**
+Spring’in eski sürümlerinde Bean tanımlamak için XML kullanılıyordu.
+
+```xml
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="myBean" class="com.example.MyService"/>
+</beans>
+```
+Bu XML dosyasında, `MyService` sınıfı bir Bean olarak tanımlanmıştır ve `id="myBean"` ile erişilebilir.
+
+---
+
+### **2.2. Java Anotasyonları ile Bean Tanımlama**
+Günümüzde XML yerine anotasyon tabanlı tanımlamalar daha yaygın kullanılıyor.
+
+#### **2.2.1. `@Component` ile Bean Tanımlama**
+Spring, `@Component` anotasyonu ile sınıfları otomatik olarak bir Bean olarak yönetir.
+
+```java
+import org.springframework.stereotype.Component;
+
+@Component
+public class MyService {
+    public void serve() {
+        System.out.println("Service is working...");
+    }
+}
+```
+- Bu sınıf bir Bean olarak tanımlanır ve Spring tarafından otomatik olarak yönetilir.
+- **Component Scanning** özelliği ile, Spring `@Component` olan sınıfları tarar ve otomatik olarak bir Bean olarak kaydeder.
+
+---
+
+#### **2.2.2. `@Service`, `@Repository`, `@Controller` ile Bean Tanımlama**
+Spring, **Component Scanning** mekanizmasını daha anlamlı hale getirmek için aşağıdaki özel anotasyonları sağlar:
+
+1. `@Service` → Servis katmanında kullanılan sınıflar.
+2. `@Repository` → Veritabanı erişim katmanında kullanılan sınıflar.
+3. `@Controller` → Web katmanında (Spring MVC) kullanılan kontrolcüler.
+
+```java
+import org.springframework.stereotype.Service;
+
+@Service
+public class UserService {
+    public String getUser() {
+        return "John Doe";
+    }
+}
+```
+
+Bu anotasyonlar da `@Component` ile aynı işlevi görür ancak semantik olarak daha anlamlıdır.
+
+---
+
+#### **2.2.3. `@Bean` ile Bean Tanımlama**
+Spring’de Bean tanımlamanın bir başka yöntemi de **`@Bean`** anotasyonudur.
+
+```java
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class AppConfig {
+
+    @Bean
+    public MyService myService() {
+        return new MyService();
+    }
+}
+```
+Burada:
+- `@Configuration` sınıfı, Spring için yapılandırma sınıfı olduğunu belirtir.
+- `@Bean` anotasyonu ile bir Bean nesnesi manuel olarak tanımlanmıştır.
+
+---
+
+## **3. Bean Yaşam Döngüsü**
+Spring Bean’leri, belirli bir yaşam döngüsü içerisindedir. Bu süreç **Spring Container** tarafından yönetilir.
+
+1. **Bean Tanımlama:** Spring, konfigürasyon dosyası veya anotasyonlar aracılığıyla Bean'i algılar.
+2. **Bean Oluşturma:** Bean örneği oluşturulur (new operatörü gibi).
+3. **Bağımlılıkların Enjekte Edilmesi:** `@Autowired` gibi anotasyonlarla bağımlılıklar enjekte edilir.
+4. **İlk Aşama İşlemleri (Initializing Bean):** Bean ilk oluşturulduğunda bazı başlangıç işlemleri yapılır.
+5. **Kullanım:** Bean, Spring Container tarafından yönetilir ve kullanılabilir hale gelir.
+6. **Yıkım:** Uygulama kapanırken Bean yok edilir.
+
+---
+
+## **4. Bean Scope (Kapsamı)**
+Spring, Bean nesneleri için farklı **kapsamlar (scope)** sunar.
+
+### **4.1. Singleton Scope (Varsayılan)**
+- **Tüm uygulama içinde yalnızca bir tane nesne oluşturulur.**
+- Aynı Bean tekrar çağrılsa bile aynı nesne döndürülür.
+
+```java
+@Component
+@Scope("singleton")
+public class SingletonBean {
+}
+```
+
+### **4.2. Prototype Scope**
+- **Her çağrıldığında yeni bir nesne oluşturulur.**
+- Singleton’ın aksine, her istekte yeni bir nesne döner.
+
+```java
+@Component
+@Scope("prototype")
+public class PrototypeBean {
+}
+```
+
+### **4.3. Request Scope (Web Uygulamaları için)**
+- **Her HTTP isteğinde yeni bir nesne oluşturulur.**
+- Sadece Web uygulamalarında kullanılabilir.
+
+```java
+@Component
+@Scope("request")
+public class RequestBean {
+}
+```
+
+### **4.4. Session Scope**
+- **Kullanıcının oturumu boyunca tek bir nesne oluşturulur.**
+
+```java
+@Component
+@Scope("session")
+public class SessionBean {
+}
+```
+
+---
+
+## **5. Core Bean’lerin Kullanımı**
+Bir Bean’i kullanmanın en yaygın yolu **Dependency Injection (Bağımlılık Enjeksiyonu)** ile ona erişmektir.
+
+### **5.1. `@Autowired` ile Bean Enjekte Etme**
+Spring, bağımlılıkları otomatik olarak enjekte etmek için `@Autowired` anotasyonunu kullanır.
+
+```java
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
+public class MyController {
+
+    private final MyService myService;
+
+    @Autowired
+    public MyController(MyService myService) {
+        this.myService = myService;
+    }
+
+    public void process() {
+        myService.serve();
+    }
+}
+```
+
+- `@Autowired`, `MyService` nesnesini otomatik olarak `MyController` içine enjekte eder.
+
+---
+
+## **Sonuç**
+Java'da **Core Bean**, Spring Framework içerisinde merkezi bir bileşen olarak kullanılan nesnelerdir. **Dependency Injection, IoC, Bean Scope ve Yaşam Döngüsü** gibi kavramlarla entegre çalışır.
+
+Core Bean’ler:
+- XML veya Java tabanlı konfigürasyonla oluşturulabilir.
+- `@Component`, `@Service`, `@Repository`, `@Controller`, `@Bean` gibi anotasyonlarla tanımlanabilir.
+- Singleton, Prototype, Request, Session gibi farklı kapsamlarla kullanılabilir.
+- Dependency Injection mekanizması sayesinde nesnelerin yönetimini Spring üstlenir.
+
+Spring Core Bean mekanizması, uygulamaların yönetilebilir, modüler ve ölçeklenebilir olmasını sağlar.
 
 
+## Javada static ile constructor nedir ?
+```sh 
+
+```
+---
+
+# **Java'da `static` ve `constructor` Nedir? Aralarındaki Farklar Nelerdir?**
+
+Java’da `static` ve `constructor`, nesne yönelimli programlamada oldukça önemli iki kavramdır. **İkisi de sınıfların ve nesnelerin yönetimiyle ilgilidir ama farklı işlevlere sahiptirler.**
+
+Bu yazıda, **hem `static` hem de `constructor` kavramlarını ayrı ayrı detaylandıracak, ardından aralarındaki farkları derinlemesine açıklayacağız.**
+
+---
+
+# **🔹 `static` Nedir?**
+Java’da `static` bir **anahtar kelimedir** ve sınıf seviyesinde tanımlanan üyeleri (değişkenler, metodlar ve bloklar) belirtmek için kullanılır. **Static üyeler, nesneye bağlı değildir, sınıfa bağlıdır.**
+
+## **🔹 `static` Kullanım Alanları**
+1. **Static Değişkenler (`static variables`)**
+2. **Static Metodlar (`static methods`)**
+3. **Static Bloklar (`static blocks`)**
+4. **Static İç Sınıflar (`static nested classes`)**
+
+---
+
+### **📌 1️⃣ `static` Değişkenler (Class Variables)**
+Bir değişken `static` olarak tanımlandığında, **bütün nesneler tarafından paylaşılır ve bellekte yalnızca bir kopyası bulunur.**
+
+```java
+class Car {
+    static int totalCars = 0;  // Static değişken
+    String model;
+
+    public Car(String model) {
+        this.model = model;
+        totalCars++;  // Her nesne oluşturulduğunda artırılır
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Car car1 = new Car("Tesla");
+        Car car2 = new Car("BMW");
+
+        System.out.println("Toplam araba sayısı: " + Car.totalCars); // 2
+    }
+}
+```
+**📌 Çıktı:**
+```
+Toplam araba sayısı: 2
+```
+**✔ `static` değişkenler tüm nesneler tarafından paylaşılır, her nesne için ayrı bir kopyası olmaz.**
+
+---
+
+### **📌 2️⃣ `static` Metodlar (Class Methods)**
+`static` metodlar, nesne oluşturmadan çağrılabilir.
+
+```java
+class MathUtils {
+    static int square(int num) {
+        return num * num;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("5'in karesi: " + MathUtils.square(5)); // 25
+    }
+}
+```
+**✔ Static metodlar, sadece `static` değişkenlere erişebilir ve `this` kullanamaz.**
+
+---
+
+### **📌 3️⃣ `static` Bloklar (Static Initialization Blocks)**
+**`static` blok, sınıf belleğe yüklendiğinde bir kez çalıştırılır.**
+
+```java
+class Config {
+    static String appName;
+
+    static {
+        appName = "MyApp";
+        System.out.println("Static blok çalıştı!");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        System.out.println(Config.appName);
+    }
+}
+```
+**📌 Çıktı:**
+```
+Static blok çalıştı!
+MyApp
+```
+✔ **Static bloklar, sınıf yüklenirken bir kere çalışır ve genellikle başlangıç ayarları için kullanılır.**
+
+---
+
+# **🔹 Constructor (Yapıcı Metod) Nedir?**
+Bir sınıfın nesnesi oluşturulduğunda **otomatik olarak çağrılan özel bir metottur.**
+
+## **🔹 Constructor’ın Özellikleri:**
+1. **Sınıf adıyla aynı isme sahip olmalıdır.**
+2. **Geri dönüş tipi yoktur.** (void bile yazılmaz!)
+3. **Otomatik olarak çağrılır.**
+4. **Overloading (Aşırı Yükleme) destekler.**
+
+---
+
+### **📌 Constructor Örneği**
+```java
+class Car {
+    String model;
+
+    // Constructor (Yapıcı Metod)
+    public Car(String model) {
+        this.model = model;
+        System.out.println(model + " oluşturuldu.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Car car1 = new Car("Tesla"); // Constructor çağrılır
+        Car car2 = new Car("BMW");
+    }
+}
+```
+**📌 Çıktı:**
+```
+Tesla oluşturuldu.
+BMW oluşturuldu.
+```
+✔ **Her nesne oluşturulduğunda constructor çalışır.**
+
+---
+
+## **🔹 Constructor Overloading (Aşırı Yükleme)**
+Bir sınıfta birden fazla constructor tanımlanabilir.
+
+```java
+class Person {
+    String name;
+    int age;
+
+    // Constructor 1 (isim ile)
+    public Person(String name) {
+        this.name = name;
+        this.age = 18;  // Varsayılan yaş
+    }
+
+    // Constructor 2 (isim ve yaş ile)
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Person p1 = new Person("Ali");
+        Person p2 = new Person("Veli", 25);
+
+        System.out.println(p1.name + ", " + p1.age); // Ali, 18
+        System.out.println(p2.name + ", " + p2.age); // Veli, 25
+    }
+}
+```
+✔ **Constructor overloading ile farklı parametreler için farklı yapılandırmalar yapabiliriz.**
+
+---
+
+# **🔹 `static` ve `constructor` Arasındaki Farklar**
+| **Özellik** | **`static`** | **`constructor`** |
+|------------|-------------|----------------|
+| **Nesne oluşturma gerekliliği** | Nesne oluşturmadan kullanılabilir. | Nesne oluşturulduğunda çalışır. |
+| **Bellekte Konumu** | **Sınıf belleğe yüklendiğinde çalışır.** | **Nesne oluşturulduğunda çalışır.** |
+| **Metod tipi** | Normal metodlar olabilir (geri dönüş tipi vardır). | Geri dönüş tipi yoktur (void bile yazılmaz). |
+| **Ana kullanım alanı** | Sınıf seviyesinde değişken/metod yönetimi. | Nesne oluşturma sürecini yönetir. |
+| **Çağrılma Şekli** | `ClassName.staticMethod()` ile çağrılır. | `new ClassName()` ile otomatik çağrılır. |
+| **Kaç kez çalışır?** | Static bloklar **bir kez** çalışır. | Her nesne oluşturulduğunda tekrar çalışır. |
+| **Overloading** | Normal metodlar gibi overload edilebilir. | Overloading destekler. |
+| **Özel Anahtar Kelime (`this` veya `super`) Kullanımı** | `this` veya `super` kullanılamaz. | `this` veya `super` kullanılabilir. |
+
+---
+
+# **🔹 Sonuç**
+- **`static`, sınıf seviyesinde elemanlar tanımlamak için kullanılır ve nesne oluşturmadan çalışır.**
+- **`constructor`, nesne oluşturulduğunda çağrılan bir metottur ve nesnenin başlatılmasını sağlar.**
+- **Static bloklar yalnızca bir kez çalışırken, constructor her nesne oluşturulduğunda çağrılır.**
+- **`static` metodlar ve değişkenler, nesneye değil sınıfa bağlıdır, ancak constructor her nesne için çalışır.**
+
+✔ **Java’da sınıflar oluştururken, `static` ve `constructor` kavramlarını doğru kullanarak kodumuzu daha verimli hale getirebiliriz!** 🚀
+
+
+## Javada Serializable
+```sh 
+
+```
+---
+
+# **Java'da `Serializable` Nedir?**
+Java'da `Serializable`, **bir nesnenin byte dizisine dönüştürülmesini (serileştirme) ve daha sonra geri okunmasını (deserileştirme) sağlayan bir arayüzdür.** Nesneleri dosyaya kaydetmek, ağ üzerinden göndermek veya kalıcı hale getirmek için kullanılır.
+
+## **🔹 `Serializable` Ne İşe Yarar?**
+- Bir nesnenin durumu **diskte saklanabilir** veya **veritabanına kaydedilebilir**.
+- Bir nesne **ağ üzerinden iletilebilir**.
+- **RMI (Remote Method Invocation)** gibi sistemlerde nesne transferi için kullanılır.
+- **Cache mekanizmaları ve oturum yönetimi** gibi alanlarda nesne saklamak için kullanılır.
+
+---
+
+## **🔹 `Serializable` Kullanımı**
+Java'da **`Serializable` bir işaretleyici (marker) arayüzdür.** Yani herhangi bir metod içermez. **Bir sınıfı serileştirmek için `implements Serializable` kullanılır.**
+
+📌 **Örnek: `Person` Sınıfını Serileştirme ve Dosyaya Kaydetme**
+```java
+import java.io.*;
+
+// Serializable arayüzünü uygulayan sınıf
+class Person implements Serializable {
+    private static final long serialVersionUID = 1L; // Versiyon kontrolü için
+    private String name;
+    private int age;
+
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public String getName() { return name; }
+    public int getAge() { return age; }
+
+    @Override
+    public String toString() {
+        return "Name: " + name + ", Age: " + age;
+    }
+}
+
+// Ana program
+public class SerializeDemo {
+    public static void main(String[] args) {
+        Person person = new Person("Ali", 30);
+
+        // Serileştirme işlemi (ObjectOutputStream ile dosyaya yazma)
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("person.dat"))) {
+            out.writeObject(person);
+            System.out.println("Nesne başarıyla serileştirildi.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Deserileştirme işlemi (ObjectInputStream ile dosyadan okuma)
+        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("person.dat"))) {
+            Person readPerson = (Person) in.readObject();
+            System.out.println("Nesne başarıyla deserileştirildi: " + readPerson);
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+**📌 Çıktı:**
+```
+Nesne başarıyla serileştirildi.
+Nesne başarıyla deserileştirildi: Name: Ali, Age: 30
+```
+
+---
+
+## **🔹 Serileştirmenin Çalışma Mantığı**
+📌 **Adım Adım Süreç:**
+1. **Nesne, `writeObject()` metodu ile bir dosyaya kaydedilir.**
+2. **Nesne, `readObject()` metodu ile geri okunur.**
+3. **Serileştirme sırasında nesnenin tüm alanları (field) kaydedilir.**
+4. **Deserileştirme sırasında nesne yeniden oluşturulur ve alanları yüklenir.**
+
+---
+
+## **🔹 `serialVersionUID` Nedir?**
+Serileştirilmiş bir nesnenin sınıfı değişirse **`InvalidClassException`** hatası alınabilir.  
+Bu sorunu önlemek için **`serialVersionUID` tanımlanır.**
+
+```java
+private static final long serialVersionUID = 1L;
+```
+📌 **Eğer `serialVersionUID` eklenmezse:**
+- JVM **otomatik bir UID oluşturur.**
+- Sınıfta bir değişiklik olursa UID değişir ve **önceki serileştirilmiş nesneler kullanılamaz.**
+
+📌 **Eğer `serialVersionUID` eklenirse:**
+- Eski nesneler, yeni sınıfla **hata vermeden yüklenebilir.**
+- Ancak **eklenen yeni alanlar null veya varsayılan değerde kalır.**
+
+📌 **Örnek:**  
+Önce aşağıdaki sınıfı kaydettik ve bir nesne oluşturduk:
+```java
+class Person implements Serializable {
+    private static final long serialVersionUID = 1L;
+    private String name;
+    private int age;
+}
+```
+Sonra sınıfa yeni bir alan ekledik:
+```java
+class Person implements Serializable {
+    private static final long serialVersionUID = 1L;
+    private String name;
+    private int age;
+    private String email; // Yeni alan eklendi
+}
+```
+Eğer eski dosyadan deserileştirme yaparsak **`email` alanı `null` kalır ama hata vermez.** Eğer `serialVersionUID` tanımlanmamış olsaydı, **`InvalidClassException`** hatası alırdık.
+
+---
+
+## **🔹 Serileştirme Kuralları ve İstisnalar**
+
+### **1️⃣ `transient` Anahtar Kelimesi**
+Bazı alanların serileştirilmesini istemiyorsak **`transient` anahtar kelimesini kullanırız.**
+
+```java
+class Person implements Serializable {
+    private static final long serialVersionUID = 1L;
+    private String name;
+    private int age;
+    private transient String password; // Serileştirilmeyecek
+
+    public Person(String name, int age, String password) {
+        this.name = name;
+        this.age = age;
+        this.password = password;
+    }
+}
+```
+**📌 Çıktı:**
+```bash
+Nesne başarıyla serileştirildi.
+Nesne başarıyla deserileştirildi: Name: Ali, Age: 30, Password: null
+```
+- **`transient` alanlar serileştirilmez** ve varsayılan değere (null veya 0) döner.
+
+---
+
+### **2️⃣ `static` Alanlar Serileştirilemez**
+```java
+class Test implements Serializable {
+    private static final long serialVersionUID = 1L;
+    private static int counter = 100;
+}
+```
+- **`static` alanlar serileştirilmez** çünkü sınıfa aittir ve nesneye özel değildir.
+
+---
+
+### **3️⃣ Serileştirme ile Miras (Inheritance)**
+Eğer bir sınıf `Serializable` değilse, onun alt sınıfları da serileştirilemez.
+
+```java
+class Parent {
+    int id;
+}
+
+class Child extends Parent implements Serializable {
+    private static final long serialVersionUID = 1L;
+    String name;
+}
+```
+📌 **Burada `Parent` serileştirilebilir mi?** ❌ **Hayır, çünkü `Serializable` implement edilmedi!**  
+Eğer `Parent`'ı serileştirmek istiyorsak, **ya `Serializable` yapmalıyız ya da `super` alanlarını manuel serileştirmeliyiz.**
+
+```java
+class Parent {
+    int id;
+}
+
+class Child extends Parent implements Serializable {
+    private static final long serialVersionUID = 1L;
+    String name;
+
+    private void writeObject(ObjectOutputStream out) throws IOException {
+        out.defaultWriteObject(); // Normal serileştirme yap
+        out.writeInt(id); // Ekstra: Parent id’yi manuel kaydet
+    }
+
+    private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
+        in.defaultReadObject(); // Normal deserileştirme yap
+        id = in.readInt(); // Ekstra: Parent id’yi geri yükle
+    }
+}
+```
+---
+
+## **🔹 Sonuç**
+- **`Serializable`**, Java nesnelerini **diskte saklamak veya ağda iletmek için** kullanılır.
+- **`serialVersionUID`**, sınıf versiyonlamasında uyumluluğu sağlar.
+- **`transient`**, hassas verilerin serileştirilmesini engeller.
+- **`static` alanlar serileştirilmez** çünkü sınıfa aittir.
+- **Miras kullanıyorsak, üst sınıfların da serileştirildiğinden emin olmalıyız.**
+
+🚀 **Serileştirme, verileri kalıcı hale getirmek için en önemli Java özelliklerinden biridir!** 🚀
+
+## Javada IO(Giriş / Çıkış)
+```sh 
+
+```
+---
+## **Java'da I/O (Input/Output) Nedir?**
+
+**Java'da I/O (Giriş/Çıkış - Input/Output)**, bir programın dış dünyayla veri alışverişi yapmasını sağlayan mekanizmalardır. Bu mekanizmalar, klavye girişi (kullanıcıdan veri alma), dosya okuma/yazma, ağ üzerinden veri transferi gibi işlemleri kapsar. Java'da I/O işlemleri, **java.io** ve **java.nio** (New I/O) paketleri aracılığıyla gerçekleştirilir.
+
+---
+
+## **1. Java I/O Paketleri**
+Java'da temel I/O işlemleri için iki ana paket vardır:
+
+1. **java.io**:
+    - Geleneksel I/O işlemleri için kullanılır.
+    - **Stream (Akış) tabanlıdır**.
+    - Yavaş çalışır, ancak kullanımı basittir.
+    - **Blocking I/O** mantığıyla çalışır (I/O işlemi tamamlanana kadar program durur).
+
+2. **java.nio (New I/O)**:
+    - Daha hızlı ve modern bir yaklaşımdır.
+    - **Buffer (Tampon) ve Channel (Kanal) tabanlıdır**.
+    - Non-blocking I/O desteği sunar (Asenkron çalışabilir).
+    - Büyük veri işlemleri için daha uygundur.
+
+Bu yazıda, geleneksel **java.io** kütüphanesini detaylıca ele alacağız.
+
+---
+
+## **2. Java’da I/O İşlemlerinin Temel Kavramları**
+Java'daki I/O işlemleri aşağıdaki temel kavramlar üzerine kuruludur:
+
+### **a) Stream (Akış)**
+Java’da **Stream (Akış)**, veri giriş-çıkış işlemlerinin temelidir. Bir akış, **veri kaynağından hedefe veri taşıyan bir soyutlamadır**.
+
+- **InputStream**: Veri giriş işlemlerini yönetir (klavyeden giriş, dosyadan okuma vb.).
+- **OutputStream**: Veri çıkış işlemlerini yönetir (ekrana yazma, dosyaya kaydetme vb.).
+
+#### **Akış Türleri:**
+1. **Byte Streams (Bayt Akışları)**
+    - **Veriyi bayt bazlı işler** (1 byte = 8 bit).
+    - **Genellikle resim, video ve ses dosyaları gibi ikili (binary) verileri işlemek için kullanılır**.
+    - **Örnekler:**
+        - **InputStream** (Giriş Akışı)
+        - **OutputStream** (Çıkış Akışı)
+
+2. **Character Streams (Karakter Akışları)**
+    - **Metin bazlı verileri işlemek için kullanılır**.
+    - **Örnekler:**
+        - **Reader (Giriş)**
+        - **Writer (Çıkış)**
+
+---
+
+## **3. Java'da I/O Sınıfları ve Kullanımı**
+### **a) Byte Streams (Bayt Akışları)**
+Bayt akışları, veriyi **byte düzeyinde işler** ve resim, video gibi ikili (binary) veriler için idealdir.
+
+#### **1. FileInputStream - Dosya Okuma**
+Bu sınıf, bir dosyadan bayt bayt veri okumanızı sağlar.
+
+```java
+import java.io.FileInputStream;
+import java.io.IOException;
+
+public class FileInputExample {
+    public static void main(String[] args) {
+        try (FileInputStream fis = new FileInputStream("example.txt")) {
+            int data;
+            while ((data = fis.read()) != -1) {
+                System.out.print((char) data); // Baytları karaktere çevirerek ekrana yazdır
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+✅ **Dosyadan bayt bayt okuma yapar ve içeriği ekrana yazdırır.**
+
+---
+
+#### **2. FileOutputStream - Dosyaya Yazma**
+Bu sınıf, bir dosyaya bayt bazlı veri yazmanızı sağlar.
+
+```java
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+public class FileOutputExample {
+    public static void main(String[] args) {
+        String text = "Merhaba, Java I/O!";
+        try (FileOutputStream fos = new FileOutputStream("output.txt")) {
+            fos.write(text.getBytes()); // Metni bayt dizisine çevirerek dosyaya yaz
+            System.out.println("Dosyaya yazma işlemi tamamlandı.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+✅ **Metni dosyaya bayt bazında yazdırır.**
+
+---
+
+### **b) Character Streams (Karakter Akışları)**
+Karakter akışları, **karakter (char) bazında veri işlemek için kullanılır** ve metin dosyaları için idealdir.
+
+#### **1. FileReader - Dosya Okuma**
+Bu sınıf, bir dosyadan **karakter karakter veri okumanızı** sağlar.
+
+```java
+import java.io.FileReader;
+import java.io.IOException;
+
+public class FileReaderExample {
+    public static void main(String[] args) {
+        try (FileReader reader = new FileReader("example.txt")) {
+            int character;
+            while ((character = reader.read()) != -1) {
+                System.out.print((char) character);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+✅ **Metin dosyasını karakter karakter okur ve ekrana yazdırır.**
+
+---
+
+#### **2. FileWriter - Dosyaya Yazma**
+Bu sınıf, bir dosyaya **karakter bazlı** veri yazmanızı sağlar.
+
+```java
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class FileWriterExample {
+    public static void main(String[] args) {
+        String text = "Java I/O dersine hoş geldiniz!";
+        try (FileWriter writer = new FileWriter("output.txt")) {
+            writer.write(text);
+            System.out.println("Dosyaya yazma işlemi başarılı!");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+✅ **Metni dosyaya karakter bazında yazdırır.**
+
+---
+
+### **c) Buffered Streams (Tamponlu Akışlar)**
+BufferedReader ve BufferedWriter gibi sınıflar, **veriyi tampon (buffer) kullanarak daha hızlı okuma/yazma işlemi yapar.**
+
+#### **1. BufferedReader - Hızlı Dosya Okuma**
+```java
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class BufferedReaderExample {
+    public static void main(String[] args) {
+        try (BufferedReader br = new BufferedReader(new FileReader("example.txt"))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                System.out.println(line); // Satır satır okuma yapar
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+✅ **Dosyayı satır satır okur ve ekrana yazdırır.**
+
+---
+
+#### **2. BufferedWriter - Hızlı Dosya Yazma**
+```java
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class BufferedWriterExample {
+    public static void main(String[] args) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("output.txt"))) {
+            bw.write("Java I/O çok önemli!");
+            bw.newLine();
+            bw.write("Tamponlu yazma işlemi başarıyla tamamlandı.");
+            System.out.println("Dosya yazıldı.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+✅ **Tampon kullanarak veriyi daha hızlı yazdırır.**
+
+---
+
+## **Sonuç ve Özet**
+- Java I/O işlemleri **java.io** paketinde tanımlanmıştır.
+- **InputStream / OutputStream** bayt bazlı çalışır (Resim, video gibi dosyalar için uygundur).
+- **Reader / Writer** karakter bazlı çalışır (Metin dosyaları için uygundur).
+- **BufferedReader / BufferedWriter** daha hızlı işlem yapar.
+- Dosya okuma/yazma işlemleri genellikle **try-with-resources** yapısı ile kullanılır.
+
+👉 **I/O işlemlerini verimli kullanarak büyük ölçekli projelerde performans kazanabilirsiniz! 🚀**
 
 ## Cipher (AES/DES/RSA/HASHING)
 ```sh 
@@ -6695,3 +8137,5 @@ Java'da sınıflar, büyük ölçekli projelerde **düzeni ve okunabilirliği ar
 
 ```
 ---
+
+
