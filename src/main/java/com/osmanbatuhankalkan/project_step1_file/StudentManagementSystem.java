@@ -1,6 +1,5 @@
-package com.osmanbatuhankalkan.project_step_file;
+package com.osmanbatuhankalkan.project_step1_file;
 
-import com.osmanbatuhankalkan.project_step_file.StudentDto;
 import com.osmanbatuhankalkan.utils.SpecialColor;
 
 import java.io.*;
